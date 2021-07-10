@@ -2,7 +2,6 @@ package ru.ceounit.onlineshop.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.MailSender;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -21,8 +20,8 @@ public class UserService implements UserDetailsService {
     @Autowired
     private UserRepo userRepo;
 
-    //@Autowired
-    //private MailSender mailSender;
+    @Autowired
+    private MailSender mailSender;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -55,16 +54,16 @@ public class UserService implements UserDetailsService {
 
         userRepo.save(user);
 
-        //sendMessage(user);
+        sendMessage(user);
 
         return true;
     }
 
-    /*private void sendMessage(User user) {
+    private void sendMessage(User user) {
         if (!StringUtils.isEmpty(user.getEmail())) {
             String message = String.format(
                     "Hello, %s! \n" +
-                            "Welcome to Sweater. Please, visit next link: http://%s/activate/%s",
+                            "Welcome to Azon. Please, visit next link: http://%s/activate/%s",
                     user.getEmail(),
                     hostname,
                     user.getActivationCode()
@@ -72,7 +71,7 @@ public class UserService implements UserDetailsService {
 
             mailSender.send(user.getEmail(), "Activation code", message);
         }
-    }*/
+    }
 
     public boolean activateUser(String code) {
         User user = userRepo.findByActivationCode(code);
@@ -132,9 +131,9 @@ public class UserService implements UserDetailsService {
 
         userRepo.save(user);
 
-        //if (isEmailChanged) {
-          //  sendMessage(user);
-        //}
+        if (isEmailChanged) {
+            sendMessage(user);
+        }
     }
 
 }
