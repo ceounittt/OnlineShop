@@ -14,18 +14,18 @@ public class MainController {
     @Autowired
     ProductService productService;
 
-    @GetMapping("/main")
+    @GetMapping("/")
     public String index(Model model){
         model.addAttribute("products", productService.getAllProducts());
         return "index";
     }
 
-    @GetMapping
+    /*@GetMapping
     public String add(
             @AuthenticationPrincipal User user,
             BindingResult bindingResult,
             Model model
     ) {
         return null;
-    }
+    }*/
 }
