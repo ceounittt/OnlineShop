@@ -3,7 +3,7 @@ create sequence hibernate_sequence start 1 increment 1;
 create table product (
                          id int8 not null,
                          name varchar(255) not null,
-                         cost numeric(255) not null,
+                         cost float8 not null,
                          description varchar(2048) not null,
                          primary key (id)
 );
@@ -21,5 +21,6 @@ create table usr (
                      password varchar(255) not null,
                      firstname varchar(255) not null,
                      lastname varchar(255) not null,
+                     role varchar(255) not null,
                      primary key (id)
 );
