@@ -8,7 +8,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto align-center">
             <li class="nav-item">
                 <a class="nav-link" href="/">Home</a>
             </li>
@@ -19,7 +19,7 @@
             </#if>
             <#if isAdmin>
                 <li class="nav-item">
-                    <a class="nav-link" href="/user">User list</a>
+                    <a class="nav-link" href="/add">Add product</a>
                 </li>
             </#if>
             <#if user??>
@@ -30,6 +30,8 @@
                     <a class="nav-link" href="/user/orders">Orders</a>
                 </li>
             </#if>
+                <input type="text" name="filter" class="form-control" value="${filter?ifExists}" placeholder="Find everything" />
+                <button class="btn btn-primary" type="submit">Search</button>
         </ul>
 
         <div class="navbar-text mr-3"><#if user??>${name}<#else>Please, login</#if></div>
