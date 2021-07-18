@@ -96,9 +96,13 @@
     </form>
 </#macro>
 
-<#macro logout>
+<#macro logout><#if user??>
     <form action="/logout" method="post">
         <input type="hidden" name="_csrf" value="${_csrf.token}" />
-        <button class="btn btn-primary" type="submit"><#if user??>Sign Out<#else>Log in</#if></button>
+        <button class="btn btn-primary" type="submit">Sign out</button>
+    </form><#else>
+    <form action="/login" method="post">
+        <input type="hidden" name="_csrf" value="${_csrf.token}" />
+        <button class="btn btn-primary" type="submit">Sign in</button>
     </form>
-</#macro>
+</#if></#macro>

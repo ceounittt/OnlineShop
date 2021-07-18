@@ -1,12 +1,12 @@
 package ru.ceounit.onlineshop.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import ru.ceounit.onlineshop.model.Product;
+import ru.ceounit.onlineshop.model.dto.ProductDto;
 import ru.ceounit.onlineshop.repo.ProductRepo;
-
-import java.util.List;
-import java.util.Map;
 
 @Service
 public class ProductService {
@@ -14,17 +14,12 @@ public class ProductService {
     private ProductRepo productRepo;
     private Product product;
 
-    public List<Product> getAllProducts() {
-        return productRepo.findAll();
-    }
-
-    public void saveProduct(String productName, Double cost, String imageName,
-                            String description) {
-        product.setProductName(productName);
-        product.setCost(cost);
-        product.setImageName(imageName);
-        product.setDescription(description);
-
+    public Page<ProductDto> productList(Pageable pageable, String filter) {
+        if (filter != null && !filter.isEmpty()) {
+            return productRepo.findByProductName(filter, pageable);
+        } else {
+            return productRepo.findAll(pageable);
+        }
     }
 }
 

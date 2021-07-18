@@ -2,7 +2,7 @@
         <form method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <input type="text" class="form-control ${(productNameError??)?string('is-invalid', '')}"
-                       value="<#if product??>${product.productName}</#if>" name="text" placeholder="Enter name of product" />
+                       value="<#if product??>${product.productName}</#if>" name="productName" placeholder="Enter name of product" />
                 <#if textError??>
                     <div class="invalid-feedback">
                         ${productNameError}
@@ -11,16 +11,16 @@
             </div>
             <div class="form-group">
                 <input type="number" class="form-control"
-                       value="<#if product??>${product.cost}</#if>" name="cost" placeholder="Cost" />
-                <#if descriptionError??>
+                       value="<#if product??>${product.cost}</#if>" name="cost" placeholder="Cost"/>
+                <#if costError??>
                     <div class="invalid-feedback">
-                        ${descriptionError}
+                        ${costError}
                     </div>
                 </#if>
             </div>
             <div class="form-group">
                 <input type="text" class="form-control"
-                       value="<#if product??>${product.description}</#if>" name="text" placeholder="Description" />
+                       value="<#if product??>${product.description}</#if>" name="description" placeholder="Description" />
                 <#if descriptionError??>
                     <div class="invalid-feedback">
                         ${descriptionError}
@@ -34,7 +34,7 @@
                 </div>
             </div>
             <input type="hidden" name="_csrf" value="${_csrf.token}" />
-            <input type="hidden" name="id" value="<#if message??>${product.id}</#if>" />
+            <input type="hidden" name="id" value="<#if product??>${product.id}</#if>" />
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Save product</button>
             </div>

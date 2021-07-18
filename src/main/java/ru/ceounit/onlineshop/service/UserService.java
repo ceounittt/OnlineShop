@@ -91,7 +91,7 @@ public class UserService implements UserDetailsService {
         return userRepo.findAll();
     }
 
-    public void saveUser(User user, String username, String firstname, String lastname,Map<String, String> form) {
+    public void saveUser(User user, String username, String firstname, String lastname, Map<String, String> form) {
         user.setFirstname(firstname);
         user.setLastname(lastname);
         user.setUsername(username);
@@ -135,5 +135,4 @@ public class UserService implements UserDetailsService {
             sendMessage(user);
         }
     }
-
 }

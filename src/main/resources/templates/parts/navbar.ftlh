@@ -19,7 +19,7 @@
             </#if>
             <#if isAdmin>
                 <li class="nav-item">
-                    <a class="nav-link" href="/add">Add product</a>
+                    <a class="nav-link" href="/add">Add</a>
                 </li>
             </#if>
             <#if user??>

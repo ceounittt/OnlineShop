@@ -1,11 +1,11 @@
 package ru.ceounit.onlineshop.model.dto;
 
 public class ProductDto {
-    private Long id;
-    private String productName;
-    private Double cost;
-    private String imageName;
-    private String description;
+    private final Long id;
+    private final String productName;
+    private final Double cost;
+    private final String imageName;
+    private final String description;
 
     public ProductDto(Long id, String productName, Double cost, String imageName, String description) {
         this.id = id;
